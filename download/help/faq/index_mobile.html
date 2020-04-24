@@ -1,0 +1,343 @@
+<html lang="zh-CN" xml:lang="zh-CN" data-blockbyte-bs-uid="63210"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="https://www.oracle.com/asset/web/analytics/infinity_common.js"></script><script blzsys="1" type="text/javascript">//<![CDATA[
+var aFEOTagsMap={};var aFeoOverrideAttrRead=function(tag,att,el){try{var pref="data-feo-orig-";if(el){if(!el.getAttribute(pref+att)){return;}}else{var els;if(tag in aFEOTagsMap){els=aFEOTagsMap[tag];}else{els=document.getElementsByTagName(tag);aFEOTagsMap[tag]=els;}for(var i=els.length-1;i>=0;i--){el=els[i];if(el.getAttribute(pref+att)){if(el.aFeoRealGetAttribute){return;}else{break;}}}if(i<0){return;}}el.aFeoRealGetAttribute=el.getAttribute;el.getAttribute=function(a,force){if(a==att&&!force){a=pref+a;}return this.aFeoRealGetAttribute(a);};Object.defineProperty(el,att,{get:function(){return this.aFeoRealGetAttribute(pref+att);}});}catch(err){}};
+//]]></script><script blzsys="1" type="text/javascript">var aFeoApplied=true;</script>
+<meta name="Language" content="zh-CN">
+<meta name="ROBOTS" content="NOINDEX,FOLLOW,NOARCHIVE">
+
+<title>Java 技术常见问题解答 - 嵌入式和移动 Java </title>
+
+	<meta name="description" content="">
+	<meta name="keywords" content="Java ME，J2ME，Java 运行时环境，JRE，jvm">
+<meta name="date" content="2017-02-09">
+
+		<link rel="stylesheet" media="all" type="text/css" href="https://www.java.com/ga/css/oldcss.css">
+	 
+
+
+<link href="https://www.java.com/feo-cdn/K/C/Ren-UTF-8~KClREjy0LszYr6Df-kTRqg8xljvRePQ6twI_FX6W974.css" data-feo-orig-href="/ga/css/screen.css" media="screen" rel="stylesheet" type="text/css" charset="utf-8"><script blzsys="1" type="text/javascript">aFeoOverrideAttrRead('link', 'href')</script>
+
+	<script type="text/javascript" charset="UTF-8" crossorigin="anonymous">window.apmeum||(window.apmeum={});apmeum.commonInited||(function(){apmeum.responseStart=Number(new Date);apmeum.appKey="null";apmeum.customerId="7e2e90dc30bda";apmeum.agentId="20890FCFB01F5B4ACA45870DAB98FFEE4EB62AB9";apmeum.agentVersionKey="20890FCFB01F5B4ACA45870DAB98FFEE4EB62AB9";apmeum.baseCollectorUrl="https://omc-7e2e90dc30bda.eum.omc.ocp.oraclecloud.com/APMaaSCollector/external/collector?";apmeum.commonInited=true;}());</script><script data-feo-orig-src="https://static.oracle.com/cdn/apm/1.46.0/apmeum.js" src="https://www.java.com/feo-cdn/_/m/Ren-UTF-8~_me_KJ0Qtk7v9K-Dw-sEHXugnZx_t2KQn6IG4Vt2-v4.js" async="async" defer="defer" crossorigin="anonymous"></script><script type="text/javascript" charset="UTF-8" crossorigin="anonymous">window.apmeum||(window.apmeum = {});apmeum.dynamicInited||(function(){apmeum.sid='6AiqfroEdopt0OR70xUykqnVDFfgSdDxFN1pN2ELByZGtDPNk55K!1470314879!NONE!1587703364100';apmeum.operationId='8AA73CEA59F36C74FC777BEE37EDAFACCE0ADF33';apmeum.ecid='005d07zgs5T9Tcw70Fm3UF00035U00MIOb';apmeum.statusCode='200';apmeum.obs=31;apmeum.typeobs || (apmeum.typeobs={});apmeum.connectionCount=3;apmeum.connectionTimeout=2000;apmeum.rewriteRules=0;apmeum.webapp_tag='';apmeum.dynamicInited=true;}());</script><script async="async" type="text/javascript" src="https://consent.trustarc.com/notice?domain=oracle.com&c=teconsent&js=bb&noticeType=bb&text=true&gtm=1&language=zh" crossorigin="" id="truste_0.7140163717892509"></script>
+	
+	<style type="text/css">#teconsent a {
+  			text-decoration: underline;
+  		}
+  
+  		#teconsent a:hover {
+  			text-decoration: none;
+  		}</style>
+	
+	<script type="text/javascript">try{oracle.truste.api.getConsentDecision().consentDecision;oracle.truste.api.getConsentDecision().source;}catch(err){var oracle=oracle||{};oracle.truste={};oracle.truste.api={};(function(){var trusteStorageItemName="truste.eu.cookie.notice_preferences";this.getCookieName=function(){return"notice_preferences";};this.getStorageItemName=function(){return trusteStorageItemName;};}).apply(oracle.truste);(function(){var trusteCommon=oracle.truste;function getCookie(cookieKey){for(var name=cookieKey+"=",cookieArray=document.cookie.split(";"),i=0;i<cookieArray.length;i++){for(var c=cookieArray[i];" "==c.charAt(0);){c=c.substring(1);}if(0==c.indexOf(name)){return c.substring(name.length,c.length);}}return null;}function getLocalStorageItem(storageKey){return"undefined"!=typeof Storage?localStorage.getItem(storageKey):null;}function getTRUSTeLocalStorageValue(storageKey){var value=getLocalStorageItem(storageKey);if(null!=value){return JSON.parse(value).value;}return null;}this.getConsentCode=function(){var value=getTRUSTeLocalStorageValue(trusteCommon.getStorageItemName())||getCookie(trusteCommon.getCookieName());return null==value?-1:parseInt(value)+1;};this.getConsentDecision=function(){var value=this.getConsentCode();if(-1==value){var text='{"consentDecision": 0, "source": "implied"}';return JSON.parse(text);}var text='{"consentDecision": '+parseInt(value)+', "source": "asserted"}';return JSON.parse(text);};}).apply(oracle.truste.api);}if(oracle.truste.api.getConsentDecision().consentDecision!=1){var iTag=document.createElement("script");if(location.host=="www.java.com"){iScript="//c.oracleinfinity.io/acs/account/wh3g12c3gg/js/java/odc.js?_ora.context=analytics:production";}else{iScript="//c.oracleinfinity.io/acs/account/wh3g12c3gg/js/java/odc.js?_ora.context=analytics:development";}iTag.src=iScript;iTag.async=true;iTag.type="text/javascript";document.head.appendChild(iTag);}</script><script src="https://c.oracleinfinity.io/acs/account/wh3g12c3gg/js/java/odc.js?_ora.context=analytics:production" async="" type="text/javascript"></script>
+	
+<script type="text/javascript" src="https://c.oracleinfinity.io/acs/account/wh3g12c3gg/js/java/analytics-production.js" async="true" defer="true"></script><style class="blockbyte-bs-style" data-name="content">body>div#blockbyte-bs-indicator>div{opacity:0;pointer-events:none}body>iframe#blockbyte-bs-sidebar.blockbyte-bs-visible,body>iframe#blockbyte-bs-overlay.blockbyte-bs-visible{opacity:1;pointer-events:auto}body.blockbyte-bs-noscroll{overflow:hidden !important}body>div#blockbyte-bs-indicator>div{position:absolute;transform:translate3d(-40px, 0, 0);top:0;left:0;width:40px !important;height:100%;background:rgba(0,0,0,0.5);border-radius:0 10px 10px 0;transition:opacity 0.3s, transform 0.3s;z-index:2}body>div#blockbyte-bs-indicator>div>span{-webkit-mask:no-repeat center/32px;-webkit-mask-image:url(chrome-extension://jdbnofccmhefkmjbkkdkfiicjkgofkdh/img/icon-bookmark.svg);background-color:#ffffff;position:absolute;display:block;top:0;left:0;width:100%;height:100%}body>div#blockbyte-bs-indicator[data-pos='right']{left:auto;right:0}body>div#blockbyte-bs-indicator[data-pos='right']>div{transform:translate3d(40px, 0, 0);left:auto;right:0;border-radius:10px 0 0 10px}body>div#blockbyte-bs-indicator.blockbyte-bs-fullHeight>div{border-radius:0}body>div#blockbyte-bs-indicator.blockbyte-bs-hover>div{transform:translate3d(0, 0, 0);opacity:1}body>div#blockbyte-bs-indicator[data-pos='left'].blockbyte-bs-has-lsb{height:100% !important;top:0 !important}body>div#blockbyte-bs-indicator[data-pos='left'].blockbyte-bs-has-lsb>div{background:transparent}body>div#blockbyte-bs-indicator[data-pos='left'].blockbyte-bs-has-lsb>div>span{-webkit-mask-position-y:20px}body>iframe#blockbyte-bs-sidebar{width:350px;max-width:none;height:0;z-index:2147483646;background-color:rgba(0,0,0,0.6) !important;border:none;display:block !important;transform:translate3d(-350px, 0, 0);will-change:width, height, opacity, transform;transition:width 0s 0.3s, height 0s 0.3s, opacity 0.3s, transform 0.3s}body>iframe#blockbyte-bs-sidebar[data-pos='right']{left:auto;right:0;transform:translate3d(350px, 0, 0)}body>iframe#blockbyte-bs-sidebar.blockbyte-bs-visible{width:calc(100% + 350px);height:100%;transform:translate3d(0, 0, 0);transition:opacity 0.3s, transform 0.3s}body>iframe#blockbyte-bs-sidebar.blockbyte-bs-hideMask{background:none !important}body>iframe#blockbyte-bs-sidebar.blockbyte-bs-hideMask:not(.blockbyte-bs-hover){width:calc(350px + 50px)}body>iframe#blockbyte-bs-overlay{width:100%;max-width:none;height:100%;z-index:2147483647;border:none;background:rgba(0,0,0,0.5) !important;transition:opacity 0.3s}
+</style><link href="https://www.java.com/feo-cdn/J/n/Ren-UTF-8~Jnz0USSAAGJNvKDuyBBz0bOGVUn-Xc_6quSMYPXCkoo.css" media="print" rel="stylesheet" type="text/css" charset="utf-8"><script type="text/javascript" src="https://c.oracleinfinity.io/acs/common/js/1.3.35/common.js" async="true" defer="true"></script><script type="text/javascript" src="https://c.oracleinfinity.io/acs/account/wh3g12c3gg/js/java/analytics-production/analytics.js" async="true" defer="true"></script></head>
+
+<body>
+	
+		<a name="top"></a>
+		<!-- Locale: zh_CN HeaderID: 1391118472680 --> 
+		 
+
+
+
+
+
+
+
+
+
+	
+		
+			
+				
+			  	
+				
+					
+						
+						
+						
+						
+													
+													
+						
+					
+				
+			
+		
+		
+		
+			
+			
+			
+	<!-- BEGIN: jWidget_C/Header/Display -->
+	
+	
+	
+	
+		 
+		 
+	
+	
+		
+	
+	<div class="jvh0">
+		<a href="/zh_CN/" class="jvl0" title="java.com">Java.com</a>
+
+<p>
+<a href="/inc/BrowserRedirect1.jsp?locale=zh_CN">下载</a>
+<a href="/zh_CN/download/help/">帮助</a>
+</p>
+
+<form name="searchForm" method="get" action="https://www.oracle.com/search/results" accept-charset="utf-8" class="jvs0 jv0sv0" onsubmit="if((document.searchForm.Ntt.value == document.searchForm.Ntt.defaultValue) || (document.searchForm.Ntt.value == '')){return false;}">
+<input type="hidden" name="cat" value="javacom">
+<input type="hidden" name="Ntk" value="SI-ALL5">
+<input type="hidden" name="lang" value="zhs">
+<input type="text" size="20" maxlength="55" name="Ntt" class="bodytext" onfocus="if( this.value==this.defaultValue ) this.value='';" onblur="if( this.value=='' ) this.value=this.defaultValue;" value="搜索" title="搜索">
+<input type="image" name="submit" src="/ga/images/jv0_search_btn.gif" id="searchbtn" alt="搜索">
+</form>
+	</div>
+	<!-- END: jWidget_C/Header/Display -->
+
+				
+	
+	
+
+
+
+
+
+	<div class="jvc0 jvc0v0 clearfix">
+		<div class="jvc0w1 clearfix">	
+			<div class="jvc0w2">
+				
+				<h1>Java 帮助中心 - 移动 Java 和嵌入式 Java</h1>
+				
+						<!-- 1 Column -->
+						<form name="help">
+							
+							<script language="javascript" type="text/javascript">
+								function passNumValue(){
+									document.help.submit();
+								}
+							</script>
+							<hr class="ltgrey">
+							<h2>结果</h2>
+							<div class="jvsp0 jvsp0v1">
+								<div class="jvsp0x0">
+									<select name="os" id="userOs" onchange="passNumValue();">
+										
+													<option value="All Platforms" selected="">所有平台</option>
+												
+													<option value="Solaris SPARC">Solaris SPARC</option>
+												
+													<option value="Solaris x86">Solaris x86</option>
+												
+													<option value="Red Hat Linux">Red Hat Linux</option>
+												
+													<option value="Oracle Enterprise Linux">Oracle Enterprise Linux</option>
+												
+													<option value="Oracle Linux">Oracle Linux</option>
+												
+													<option value="SUSE Linux">SUSE Linux</option>
+												
+													<option value="Windows 10">Windows 10</option>
+												
+													<option value="Windows 8">Windows 8 / Windows 8.1</option>
+												
+													<option value="Windows 7">Windows 7</option>
+												
+													<option value="Windows Vista">Vista</option>
+												
+													<option value="Windows XP">Windows XP</option>
+												
+													<option value="Windows 2008 Server">Windows 2008 Server</option>
+												
+													<option value="Windows Server 2012">Windows Server 2012</option>
+												
+													<option value="Macintosh OS X">Mac OS X / macOS</option>
+												
+													<option value="Ubuntu Linux">Ubuntu Linux</option>
+												
+													<option value="Linux">Linux</option>
+												
+									</select>
+								</div>
+								Java 版本:
+										<a name="j" href="?j=7">Java 7</a>&nbsp;&nbsp;|&nbsp;&nbsp;<b>Java 8</b>															
+									
+								<input type="hidden" name="j" value="8">
+							</div>
+							<table width="540" border="0" cellspacing="0" cellpadding="3" summary=" ">
+								<tbody>
+									
+										<tr>
+											<td width="540" align="left" valign="top" class="ltgrey">
+												<a href="/zh_CN/download/faq/whatis_j2me.xml" class="orangelink">J2ME 或 Java ME 是什么？</a>
+																								
+											</td>
+										</tr>
+									
+										<tr>
+											<td width="540" align="left" valign="top" class="ltgrey">
+												<a href="/zh_CN/download/faq/learn_wirelessdev.xml" class="orangelink">了解无线 Java 开发信息</a>
+																								
+											</td>
+										</tr>
+									
+										<tr>
+											<td width="540" align="left" valign="top" class="ltgrey">
+												<a href="/zh_CN/download/faq/java_mobile.xml" class="orangelink">如何获得用于移动设备的 Java？</a>
+																								
+											</td>
+										</tr>
+									
+										<tr>
+											<td width="540" align="left" valign="top" class="ltgrey">
+												<a href="/zh_CN/download/faq/java_embedded.xml" class="orangelink">如何获得用于嵌入式设备的 Java？</a>
+																								
+											</td>
+										</tr>
+									
+								</tbody>
+							</table>
+							<div class="jvsp0 jvsp0v1">
+								<div class="jvsp0x0">
+									每页结果数
+									<select name="n" id="itemsPerPage" onchange="passNumValue();">
+										
+													<option value="10">10</option>
+												
+													<option value="20" selected="">20</option>
+												
+													<option value="30">30</option>
+												
+													<option value="40">40</option>
+												
+									</select>
+								</div>
+								页:1
+							</div>
+						</form>
+					
+			</div>
+		</div>
+		<div class="jvcs0 clearfix">
+			
+				<div class="spsidebar">	
+					<div class="spheader"><a href="/zh_CN/download/help/index.xml">帮助资源</a></div>
+					<ul>
+						
+									<li><a href="/zh_CN/download/help/index_installing.xml">安装 Java</a></li>
+								
+									<li><a href="/zh_CN/download/faq/remove_olderversions.xml">删除旧版本</a></li>
+								
+									<li><a href="/zh_CN/download/help/disable_browser.xml">禁用 Java</a></li>
+								
+									<li><a href="/zh_CN/download/help/index_using.xml">使用 Java</a></li>
+								
+									<li><a href="/zh_CN/download/faq/index_general.xml">一般问题</a></li>
+								
+									<li><a href="/zh_CN/download/faq/index_mobile.xml"><b>Mobile Java</b></a></li>
+								
+									<li><a href="/zh_CN/security/">安全</a></li>
+								
+									<li><a href="/zh_CN/download/support.jsp">支持选项</a></li>
+								
+					</ul>
+				</div>
+				<br>
+			
+		</div>
+	</div>
+	 
+
+
+
+
+
+
+
+
+
+	
+		
+			
+				
+			  	
+				
+					
+						
+						
+						
+						
+													
+													
+						
+					
+				
+			
+		
+		
+		
+			
+			
+			
+	<!-- BEGIN: jWidget_C/Footer/Display -->
+	
+	
+	
+	
+		 
+		 
+	
+	<div class="jvf0">
+		<p>
+  <a href="/zh_CN/selectlanguage.jsp">选择语言</a>
+| <a href="/zh_CN/about/">关于 Java</a>
+| <a href="/zh_CN/download/support.jsp">支持</a>
+| <a href="/zh_CN/download/faq/develop.xml">开发人员</a>
+
+<br>
+
+  <a href="http://www.oracle.com/html/privacy.html">隐私政策</a>
+|&nbsp;<a><span id="teconsent" consent="undefined" style="display: inline;"><script async="async" type="text/javascript" crossorigin="" src="https://consent.trustarc.com/asset/notice.js/v/v1.7-14"></script><a id="icon-id08460901101240217" tabindex="0" role="link" lang="zh" style="cursor: pointer;">Cookie 喜好设置</a></span></a>&nbsp;
+| <a href="http://www.oracle.com/html/terms.html">使用条款</a>
+| <a href="http://www.oracle.com/html/3party.html">商标</a>
+| <a href="/zh_CN/about/disclaimer.jsp">免责声明</a>
+</p>
+
+<a href="http://www.oracle.com/" class="jvsun0">Oracle</a>
+
+	</div>
+	<!-- END: jWidget_C/Footer/Display -->
+
+				
+	
+	
+
+
+
+
+
+		<script language="JavaScript">
+		<!--
+		    var s_channel='javac:Support:FAQ';
+		    var s_pageName='javac:Support:FAQ:index_mobile.xml';
+		    var s_prop19='zh_javac:Support:FAQ:index_mobile.xml';
+		    var s_charSet="UTF-8";
+		//-->
+		</script>
+		<script data-feo-orig-src="/ga/js/s_code_remote.js" language="JavaScript" src="https://www.java.com/feo-cdn/t/U/Ren-UTF-8~tUC6wvJl1tR0eoCcQ2YthYDrBR1Hz7cx7eIR31jc3fU.js"></script><script language="JavaScript" src="/ga/js/metrics_group1.js"></script>
+	
+<script blzsys="1" type="text/javascript">(function(){var oldOnLoad = window.onload;var newOnLoad = (function() {{
+    var cssNode = document.createElement('link');
+    cssNode.href = '/feo-cdn/J/n/Ren-UTF-8~Jnz0USSAAGJNvKDuyBBz0bOGVUn-Xc_6quSMYPXCkoo.css';
+    cssNode.media = 'print';
+    cssNode.rel = 'stylesheet';
+    cssNode.type = 'text/css';
+    cssNode.charset = 'utf-8';
+    document.getElementsByTagName("head")[0].appendChild(cssNode);
+};
+});window.onload = (typeof window.onload != 'function') ?(newOnLoad):(function() { oldOnLoad(); newOnLoad();});})();</script>
+
+<iframe name="trustarc_notice" id="trustarcNoticeFrame" src="https://consent-st.trustarc.com/get?name=crossdomain.html&amp;domain=oracle.com" style="display: none;"></iframe><iframe id="blockbyte-bs-sidebar" class="notranslate" data-pos="left"></iframe><div id="blockbyte-bs-indicator" class="blockbyte-bs-fullHeight" style="width: 20px; height: 100%; top: 0%;"></div></body></html>
