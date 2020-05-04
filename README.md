@@ -7,7 +7,7 @@
 这个是最近新起的一个梗，大约是一个小孩子实名上网，并且说我会 Jvav，这个 Jvav 打错了，就被做成了梗 hhh
 梗出处:China2B2T MC服务器交流群
 ```
-如果想看完整介绍可以点[这里](www.zhihu.com/question/388824198)
+如果想看完整介绍可以点[这里](https://www.zhihu.com/question/388824198)
 ## 贡献指南
 如果你想为此网站添砖Jvav，增加更多的页面，请注意以下几点，否则您提交的 Pull Request 很有可能会被我们拒绝。
 * 请将页面的 header 和 footer 与其他页面匹配。
