@@ -7,6 +7,7 @@
 这个是最近新起的一个梗，大约是一个小孩子实名上网，并且说我会 Jvav，这个 Jvav 打错了，就被做成了梗 hhh
 梗出处:China2B2T MC服务器交流群
 ```
+如果想看完整介绍可以点[这里](www.zhihu.com/question/388824198)
 ## 贡献指南
 如果你想为此网站添砖Jvav，增加更多的页面，请注意以下几点，否则您提交的 Pull Request 很有可能会被我们拒绝。
 * 请将页面的 header 和 footer 与其他页面匹配。
@@ -38,3 +39,5 @@
 我们仅制作了 Jvav.top 网站和 Jvav Windows 版本。它们的仓库分别位于 [TZG-official/Jvav](https://github.com/TZG-official/Jvav/) 和 [TZG-official/Jvav-Windows](https://github.com/TZG-official/Jvav-Windows/).   
 我们并没有制作除这两个以外的其他项目。   
 「这仅仅是一个梗，而并非是一个真实存在的编程语言。」
+
+此项目与esu群体没有任何关系，项目内所使用的人名和人头均来自梗出处本人QQ号的昵称和头像，此项目的开发者们也没有此人任何户口，身份证号等信息。
